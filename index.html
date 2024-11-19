@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A creative design portfolio showcasing my web development and design skills">
+    <title>anji portfolio</title>
+    <style>
+       
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        header {
+            background: #333;
+            color: white;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        nav .logo h1 {
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff6347;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+
+        .hero-left {
+            background-color: #2c3e50;
+            width: 50%;
+            padding: 0 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: left;
+        }
+
+        .hero-content {
+            max-width: 600px;
+            animation: fadeInUp 1.5s ease-out forwards;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: #ff6347;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background-color: #ff6347;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #e5533e;
+        }
+
+        .hero-right {
+            width: 50%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Circle Section for Image */
+        .circle {
+            width: 250px; /* Adjusted size */
+            height: 250px; /* Adjusted size */
+            border-radius: 50%;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        @keyframes circleAnimation {
+            0% {
+                transform: scale(1) rotate(0deg);
+            }
+
+            50% {
+                transform: scale(1.1) rotate(180deg);
+            }
+
+            100% {
+                transform: scale(1) rotate(360deg);
+            }
+        }
+
+        /* Keyframe Animations */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* About Section */
+        .about {
+            background-color: #ffffff;
+            padding: 80px 20px;
+            text-align: center;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 1.5s ease-out forwards;
+        }
+
+        /* About Image */
+        .about-image {
+            width: 300px; /* Increased size */
+            height: 300px; /* Increased size */
+            background-image: url('WhatsApp%20Image%202024-11-18%20at%2010.06.12_3a993a0a.jpg'); /* Replace with actual image path */
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            animation: zoomIn 1s ease-out;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .skills {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 40px;
+        }
+
+        .skill {
+            width: 30%;
+        }
+
+        .skill h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .skill-bar {
+            height: 10px;
+            background-color: #ddd;
+            border-radius: 5px;
+            transition: width 1s ease-in-out;
+        }
+
+        .skill-bar.html {
+            width: 90%;
+            background-color: #ff6347;
+        }
+
+        .skill-bar.css {
+            width: 90%;
+            background-color: #4682b4;
+        }
+
+        .skill-bar.javascript {
+            width: 90%;
+            background-color: #f0db4f;
+        }
+        .skill-bar.LogoDesign {
+            width: 80%;
+            background-color: olivedrab;
+        }
+        .skill-bar.planingDesign {
+            width: 80%;
+            background-color: #0ad1d1;
+        }
+        
+        /* Projects Section */
+        .projects {
+            padding: 80px 20px;
+            background-color: #f1f1f1;
+            text-align: center;
+            animation: fadeIn 2s ease-out;
+        }
+
+        .project-cards {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out forwards;
+        }
+
+        /* Using background-image for the card */
+        .card-image {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .card-info {
+            padding: 20px;
+        }
+
+        .card-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .card-info p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: #ffffff;
+            padding: 80px 20px;
+            text-align: center;
+            animation: fadeIn 2s ease-out;
+        }
+
+        form {
+            display: grid;
+            gap: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        form input,
+        form textarea {
+            padding: 10px;
+            font-size: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        form button {
+            background-color: #ff6347;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        form button:hover {
+            background-color: #e5533e;
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer .social-links a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        footer .social-links a:hover {
+            color: #ff6347;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>My Portfolio</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-left">
+            <div class="hero-content">
+                <h2>Hi, I'm <span class="highlight">Anji</span></h2>
+                <p>I'm a web designer and developer passionate about creating beautiful, functional websites.</p>
+                <a href="#projects" class="btn">View My Work</a>
+            </div>
+        </div>
+        <div class="hero-right">
+            <div class="circle">
+                <img src="https://media.licdn.com/dms/image/v2/D4E12AQEcg2dhWSgZog/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1715802082830?e=2147483647&v=beta&t=_KV1pd3TJcfpBSvDm4bxKi9WahVTxIs6XEVG1-yid5k" alt="Anji">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-content">
+            <h2>About Me</h2>
+            <div class="about-image" style="background-image: url('WhatsApp\ Image\ 2024-11-18\ at\ 10.06.12_3a993a0a.jpg');"></div>
+            <p>I'm a creative web developer with a passion for building visually appealing and user-friendly websites. I specialize in front-end development and enjoy turning ideas into interactive digital experiences.</p>
+
+            <div class="skills">
+                <div class="skill">
+                    <h3>HTML</h3>
+                    <div class="skill-bar html"></div>
+                </div>
+                <div class="skill">
+                    <h3>CSS</h3>
+                    <div class="skill-bar css"></div>
+                </div>
+                <div class="skill">
+                    <h3>JavaScript</h3>
+                    <div class="skill-bar javascript"></div>
+                </div>
+                <div class="skill">
+                    <h3>LogoDesign</h3>
+                    <div class="skill-bar javascript"></div>
+                </div>
+                <div class="skill">
+                    <h3>planingDesign</h3>
+                    <div class="skill-bar javascript"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <h2>My Projects</h2>
+        <div class="project-cards">
+            <div class="card">
+                <div class="card-image" style="background-image: url('A (3).png');"></div>
+                <div class="card-info">
+                    <h3>Website:Visitorsbook</h3>
+                    <p>Visitorsbook is an Andhra Pradesh tourism website.</p>
+                    <h3>visit my website👇</h3>
+                    <a href="https://visitorsbook.io/" class="btn">visitorsbook</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image" style="background-image: url('happy days.jpg');"></div>
+                <div class="card-info">
+                    <h3>App:Happydays</h3>
+                    <p>Happydays app is an online surprise website for wishes like birthday wishes and love proposals.</p>
+                    <h3>Coming soon: Happydays</h3>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image" style="background-image: url('man-exploring-nature-ai-generated_1057389-45651.jpg');"></div>
+                <div class="card-info">
+                    <h3>Game: Virtual Dream Destination</h3>
+                    <p>VDD is an action thriller game that me and my team are working on. Coming soon to Play Store.</p>
+                    <h3>Coming soon: VDD</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2>Contact Me</h2>
+        <form action="your_form_submission_url_here" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 My Portfolio. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#">LinkedIn</a>
+            <a href="#">GitHub</a>
+            <a href="#">Twitter</a>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript for adding functionality (smooth scroll)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
