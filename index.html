@@ -25,6 +25,7 @@
             --success-color: #48bb78;
             --warning-color: #ed8936;
             --danger-color: #f56565;
+            --whatsapp-color: #25D366;
             --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
             --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.15);
@@ -34,6 +35,7 @@
             --border-radius-lg: 20px;
             --gradient-primary: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
             --gradient-accent: linear-gradient(135deg, var(--accent-color) 0%, #ff8e53 100%);
+            --gradient-whatsapp: linear-gradient(135deg, var(--whatsapp-color) 0%, #128C7E 100%);
         }
 
         * {
@@ -182,12 +184,24 @@
             background: var(--accent-light);
         }
 
+        .btn-whatsapp {
+            background: var(--whatsapp-color);
+        }
+
+        .btn-whatsapp:hover {
+            background: #128C7E;
+        }
+
         .text-primary {
             color: var(--primary-color);
         }
 
         .text-accent {
             color: var(--accent-color);
+        }
+
+        .text-whatsapp {
+            color: var(--whatsapp-color);
         }
 
         /* Particles Background */
@@ -345,12 +359,22 @@
             position: relative;
             display: flex;
             justify-content: center;
+            align-items: center;
+        }
+
+        .profile-image-container {
+            width: 450px;
+            height: 450px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .profile-image {
-            width: 450px;
-            height: 450px;
-            border-radius: var(--border-radius-lg);
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
             overflow: hidden;
             box-shadow: var(--shadow-xl);
             position: relative;
@@ -366,12 +390,22 @@
         }
 
         .profile-image:hover {
-            transform: translateY(-10px);
+            transform: translateY(-10px) scale(1.03);
             box-shadow: var(--shadow-xl);
         }
 
         .profile-image:hover img {
             transform: scale(1.05);
+        }
+
+        .profile-frame {
+            position: absolute;
+            width: 110%;
+            height: 110%;
+            border-radius: 50%;
+            border: 3px dashed var(--primary-color);
+            opacity: 0.5;
+            animation: rotate 20s linear infinite;
         }
 
         .shape {
@@ -451,31 +485,42 @@
             z-index: 1;
         }
 
-        .circle-image-container {
-    width: 350px; /* Adjust size as needed */
-    height: 350px; /* Must match width for perfect circle */
-    border-radius: 50%;
-    overflow: hidden;
-    border: 8px solid var(--primary-color);
-    box-shadow: var(--shadow-lg);
-    position: relative;
-    margin: 0 auto;
-}
+        .about-image {
+            flex: 1;
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
 
-.about-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: var(--transition);
-}
+        .about-img-container {
+            width: 550px;
+            height: 550px;
+            position: relative;
+        }
 
-.circle-image-container:hover .about-img {
-    transform: scale(1.05);
-}
+        .about-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+            border: 10px solid rgba(255, 255, 255, 0.3);
+            object-fit: cover;
+        }
 
         .about-img:hover {
-            transform: translateY(-10px) rotate(2deg);
+            transform: translateY(-10px);
             box-shadow: var(--shadow-xl);
+        }
+
+        .about-img-frame {
+            position: absolute;
+            width: 110%;
+            height: 110%;
+            border-radius: 50%;
+            border: 3px dashed var(--primary-color);
+            opacity: 0.5;
+            animation: rotate 20s linear infinite reverse;
         }
 
         .about-text {
@@ -759,6 +804,10 @@
             box-shadow: var(--shadow-md);
         }
 
+        .contact-icon.whatsapp {
+            background: var(--gradient-whatsapp);
+        }
+
         .contact-details h3 {
             font-size: 1.4rem;
             margin-bottom: 10px;
@@ -811,6 +860,53 @@
         textarea.form-control {
             min-height: 180px;
             resize: vertical;
+        }
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-whatsapp);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: var(--shadow-lg);
+            z-index: 999;
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .whatsapp-tooltip {
+            position: absolute;
+            right: 70px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            padding: 10px 15px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-md);
+            color: var(--dark-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover .whatsapp-tooltip {
+            opacity: 1;
+            right: 80px;
         }
 
         /* Footer */
@@ -900,6 +996,10 @@
             box-shadow: var(--shadow-md);
         }
 
+        .social-link.whatsapp:hover {
+            background: var(--gradient-whatsapp);
+        }
+
         .copyright {
             color: rgba(255, 255, 255, 0.7);
             font-size: 1rem;
@@ -961,6 +1061,15 @@
             }
         }
 
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
         .floating {
             animation: float 6s ease-in-out infinite;
         }
@@ -982,9 +1091,14 @@
                 font-size: 3.5rem;
             }
             
-            .profile-image {
+            .profile-image-container {
                 width: 400px;
                 height: 400px;
+            }
+
+            .about-img-container {
+                width: 450px;
+                height: 450px;
             }
         }
 
@@ -1056,7 +1170,12 @@
                 display: block;
             }
 
-            .profile-image {
+            .profile-image-container {
+                width: 350px;
+                height: 350px;
+            }
+
+            .about-img-container {
                 width: 350px;
                 height: 350px;
             }
@@ -1072,6 +1191,18 @@
             .footer-links {
                 flex-direction: column;
                 gap: 20px;
+            }
+
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+                bottom: 20px;
+                left: 20px;
+            }
+
+            .whatsapp-tooltip {
+                display: none;
             }
         }
 
@@ -1094,9 +1225,14 @@
                 text-align: center;
             }
             
-            .profile-image {
-                width: 300px;
-                height: 300px;
+            .profile-image-container {
+                width: 280px;
+                height: 280px;
+            }
+
+            .about-img-container {
+                width: 280px;
+                height: 280px;
             }
             
             .section-title {
@@ -1111,6 +1247,12 @@
 </head>
 
 <body>
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/919154716207" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">Chat with me on WhatsApp</span>
+    </a>
+
     <!-- Header -->
     <header id="header">
         <div class="container">
@@ -1143,8 +1285,11 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <div class="profile-image floating">
-                        <img src="https://media.licdn.com/dms/image/v2/D4E12AQEcg2dhWSgZog/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1715802082830?e=2147483647&v=beta&t=_KV1pd3TJcfpBSvDm4bxKi9WahVTxIs6XEVG1-yid5k" alt="Anji">
+                    <div class="profile-image-container">
+                        <div class="profile-image floating">
+                            <img src="https://media.licdn.com/dms/image/v2/D4E12AQEcg2dhWSgZog/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1715802082830?e=2147483647&v=beta&t=_KV1pd3TJcfpBSvDm4bxKi9WahVTxIs6XEVG1-yid5k" alt="Anji">
+                        </div>
+                        <div class="profile-frame"></div>
                     </div>
                     <div class="shape shape-1"></div>
                     <div class="shape shape-2"></div>
@@ -1162,10 +1307,12 @@
             <p class="section-subtitle">Get to know more about me, my skills, and what I can bring to your project</p>
             
             <div class="about-content">
-    <div class="about-image">
-        <div class="circle-image-container">
-            <img src="WhatsApp%20Image%202024-11-18%20at%2010.06.12_3a993a0a.jpg" alt="About Anji" class="about-img">
-        </div>
+                <div class="about-image">
+                    <div class="about-img-container">
+                        <img src="WhatsApp%20Image%202024-11-18%20at%2010.06.12_3a993a0a.jpg" alt="About Anji" class="about-img">
+                        <div class="about-img-frame"></div>
+                    </div>
+                </div>
                 <div class="about-text">
                     <h3 class="about-title">Creative Web Developer & Designer</h3>
                     <p class="about-description">
@@ -1395,6 +1542,16 @@
                     </div>
                     
                     <div class="contact-item">
+                        <div class="contact-icon whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>WhatsApp</h3>
+                            <a href="https://wa.me/919154716207" target="_blank">+91 9154716207</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
                         <div class="contact-icon">
                             <i class="fas fa-phone-alt"></i>
                         </div>
@@ -1439,7 +1596,12 @@
                         <div class="form-group">
                             <textarea class="form-control" placeholder="Your Message" required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-accent">Send Message <i class="fas fa-paper-plane"></i></button>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-accent">Send Message <i class="fas fa-paper-plane"></i></button>
+                            <a href="https://wa.me/919154716207" class="btn btn-whatsapp" style="margin-top: 15px;" target="_blank">
+                                <i class="fab fa-whatsapp"></i> WhatsApp Me
+                            </a>
+                        </div>
                     </form>
                 </div>
             </div>
@@ -1464,6 +1626,7 @@
                     <a href="#" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
                     <a href="#" class="social-link" target="_blank"><i class="fab fa-twitter"></i></a>
                     <a href="#" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/919154716207" class="social-link whatsapp" target="_blank"><i class="fab fa-whatsapp"></i></a>
                 </div>
                 
                 <p class="copyright">© <span id="year"></span> Anji. All rights reserved.</p>
